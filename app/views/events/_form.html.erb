@@ -20,6 +20,11 @@
     <%= e.text_field :location, placeholder: "Address", class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <label>Start date</label>
+    <%= e.select :starts_at, [["NOW!",Time.new]], prompt: "Select start date", class: "form-control" %>
+  </div>
+
   <label>Amenities</label>
 
   <div class="form-group">
@@ -30,7 +35,7 @@
   </div>
 
   <div class="form-group">
-    <label>Price in EUR</label>
+    <label>Price</label>
     <div class="input-group">
       <div class="input-group-addon">€</div>
       <%= e.number_field :price, placeholder: "e.g. 30", class: "form-control" %>
