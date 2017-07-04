@@ -22,7 +22,7 @@
 
   <div class="form-group">
     <label>Start date</label>
-    <%= e.select :starts_at, [["NOW!",Time.new]], prompt: "Select start date", class: "form-control" %>
+    <%= e.datetime_select :starts_at, placeholder: Time.new %>
   </div>
 
   <label>Amenities</label>
