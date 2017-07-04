@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :events, except: [:destroy]
+  resources :profiles, only: [:new, :edit, :create, :update]
+
 end
