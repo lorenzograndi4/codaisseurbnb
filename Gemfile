@@ -53,6 +53,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Custom installations: RSPEC and Capybara
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'pry-rails', '~> 0.3.4'
 end
 
 group :test do
