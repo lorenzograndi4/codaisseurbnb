@@ -1,0 +1,49 @@
+<%= form_for @event do |e| %>
+
+  <div class="form-group">
+   <label>Event name</label>
+   <%= e.text_field :name, placeholder: "Event name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Type of event</label>
+    <%= e.select :description, [["Pillow fight","Pillow fight"], ["Live concert", "Live concert"], ["Drunk sleepover", "Drunk sleepover"]], prompt: "Select event type", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Max number of People</label>
+    <%= e.select :capacity, [["Up to 10", 10], ["Up to 100", 100], ["Up to 1,000,000", 1_000_000]], prompt: "Max number of people", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Location</label>
+    <%= e.text_field :location, placeholder: "Address", class: "form-control" %>
+  </div>
+
+  <label>Amenities</label>
+
+  <div class="form-group">
+    <%= e.check_box :includes_food %> There will be food
+  </div>
+  <div class="form-group">
+    <%= e.check_box :includes_drinks %> You can have drinks there
+  </div>
+
+  <div class="form-group">
+    <label>Price in EUR</label>
+    <div class="input-group">
+      <div class="input-group-addon">€</div>
+      <%= e.number_field :price, placeholder: "e.g. 30", class: "form-control" %>
+    </div>
+  </div>
+
+  <label>Publish this event?</label>
+
+  <div class="form-group">
+    <%= e.check_box :active %> Active
+  </div>
+
+  <div class="actions">
+    <%= e.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
