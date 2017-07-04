@@ -42,6 +42,12 @@
     </div>
   </div>
 
+  <label>Themes</label>
+    <%= e.collection_check_boxes(:theme_ids, Theme.all, :id, :name) do |b| %>
+      <div class="form-group">
+        <%= b.check_box(class: "check_box") %> <%= b.object.name %>
+      </div>
+    <% end %>
   <label>Publish this event?</label>
 
   <div class="form-group">
@@ -51,4 +57,5 @@
   <div class="actions">
     <%= e.submit "Save", class: "btn btn-primary" %>
   </div>
+
 <% end %>

@@ -23,6 +23,11 @@
       <li><%= !@event.includes_drinks ? ("<del>Drinks</del>").html_safe : "Drinks" %></li>
     </ul>
 
+    <!-- Themes -->
+    <h4>Themes</h4>
+      <% @themes.each do |t| %>
+        <span class="label label-success"><%= t.name %></span>
+      <% end %>
   </div>
 
 </div>

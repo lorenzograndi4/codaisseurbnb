@@ -6,7 +6,9 @@ class EventsController < ApplicationController
     @events = current_user.events
   end
 
-  def show; end
+  def show
+    @themes = @event.themes
+  end
 
   def new
     @event = current_user.events.build
@@ -43,7 +45,7 @@ class EventsController < ApplicationController
       .require(:event)
       .permit(
         :name, :description, :location, :starts_at, :ends_at, :active,
-        :price, :capacity, :includes_food, :includes_drinks
+        :price, :capacity, :includes_food, :includes_drinks, theme_ids: []
       )
   end
 end
