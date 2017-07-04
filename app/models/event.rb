@@ -2,12 +2,12 @@ class Event < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :themes
 
-  validates :name, presence: true
-  validates :location, presence: true
-  validates :active, presence: true
-  validates :starts_at, presence: true
-  # validates :ends_at, date: { after_or_equal_to:  :starts_at}
-  validates :description, length: { maximum: 500 }
+  validates :name, :location, :active, :starts_at,
+    presence: true
+  validates :ends_at,
+    date: { after_or_equal_to:  :starts_at}
+  validates :description,
+    length: { maximum: 500 }
 
   # t.string :name
   # t.text :description
