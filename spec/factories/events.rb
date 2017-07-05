@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :event do
     name              { Faker::Lorem.word }
-    description       { Faker::HarryPotter.quote }
+    description       { Faker::Lorem.sentence }
     location          { Faker::Address.city }
     capacity          10
     includes_food     true
