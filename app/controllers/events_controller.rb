@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = current_user.events
-    # @events = Event.all # shows all the events 
+    #  @events = Event.all # shows all the events
   end
 
   def show
