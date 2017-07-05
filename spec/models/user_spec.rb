@@ -20,14 +20,13 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # DOES NOT WORK YET
-  # describe "association with profile" do
-  #   let(:user) { create :user }
-  #   let!(:profile) { create :profile, user: user }
-  #
-  #   it "deletes associated profile" do
-  #     expect { user.destroy }.to change(Profile, :count).by(-1)
-  #   end
-  # end
+  describe "association with profile" do
+    it { is_expected.to have_one :profile }
+    it { is_expected.to have_one(:profile).dependent(:destroy) }
+
+    # it "deletes associated profile" do
+    #   expect { user.destroy }.to change(Profile, :count).by(-1)
+    # end
+  end
 
 end
