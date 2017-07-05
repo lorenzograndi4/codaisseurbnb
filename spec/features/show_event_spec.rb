@@ -10,6 +10,8 @@ describe "Viewing individual event" do
     expect(page).to have_text(event.description)
     expect(page).to have_text(event.location)
     expect(page).to have_text(event.starts_at)
+    expect(page).to have_text(event.ends_at)
+    expect(page).to have_text(event.capacity)
     expect(page).to have_text(event.price)
   end
 

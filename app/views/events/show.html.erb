@@ -1,15 +1,23 @@
+<div class="container">
+  <%= link_to "Back", events_path, class: "btn btn-default" %>
+  <%= link_to "Update", edit_event_path(@event), class: "btn btn-default" %>
+</div>
+
 <div class="panel panel-primary">
   <div class="panel-heading"><%= @event.name %></div>
 
   <div class="panel-body">
 
     <p>Address: <%= @event.location %></p>
-    <p>Host: <%= @event.user.email %></p>
+    <p>Host: <%= @event.user.has_profile? ? @event.user.full_name : @event.user.email %></p>
 
     <!-- Main Info -->
     <h4>Main Info</h4>
     <p>Where: <%= @event.location %></p>
     <p>When: <%= @event.starts_at %></p>
+    <p>Until: <%= @event.ends_at %></p>
+    <p>Max people: <%= @event.capacity %></p>
+
     <p><%= @event.price %> EUR</p>
 
     <!-- About -->
@@ -31,5 +39,3 @@
   </div>
 
 </div>
-
-<%= link_to "Back", events_path, class: "btn btn-default" %>
