@@ -8,6 +8,11 @@ RSpec.describe Event, type: :model do
     it { is_expected.to have_and_belong_to_many (:themes) }
   end
 
+  describe "association with theme" do
+  let(:event) { create :event }
+  it {expect(event).to have_and_belong_to_many :themes }
+  end
+
   describe "#bargain?" do
     let(:bargain_event) { create :event, price: 15 }
     let(:non_bargain_event) { create :event, price: 99 }
