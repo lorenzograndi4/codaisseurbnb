@@ -9,6 +9,14 @@ class Event < ApplicationRecord
   validates :description,
     length: { maximum: 500 }
 
+  def bargain?
+    price <= 30
+  end
+
+  def self.order_by_price
+    order price: :asc
+  end
+
   # t.string :name
   # t.text :description
   # t.string :location
