@@ -1,12 +1,17 @@
+Profile.delete_all
 Theme.delete_all
+Photo.delete_all
+Event.delete_all
+User.delete_all
+
 # Users
-lorenzo1 = User.create(email: "lorenzo@pr.co", password: "lorenzo")
+lorenzo1 = User.create(email: "lorenzo+1@pr.co", password: "lorenzo")
 lorenzo2 = User.create(email: "lorenzo.grandi4@gmail.com", password: "lorenzo")
 
 puts "#{User.all.size} users created"
 
 # Events
-event = Event.create!(
+event1 = Event.create!(
   name: "Monthly Yoga Weekend",
   description: "Let's come together and practice some asanas together in the woods!",
   location: "Amsterdam",
@@ -35,11 +40,21 @@ Theme.create!([
   { name: "Food & Drink" },
 ])
 
-puts "#{Theme.all.size} categories created"
+puts "#{Theme.all.size} themes created"
+
+# Photos
+photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/lorenzocloudinary/image/upload/v1499347416/gtt08g1hdkymczecgogr.jpg", event: event1)
+photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/lorenzocloudinary/image/upload/v1499346823/fikzms6qtuulzuaa1nsm.jpg", event: event1)
+photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/lorenzocloudinary/image/upload/v1499346822/vndqg81ggj99jcwa2vxy.jpg", event: event1)
+
+puts "#{Photo.all.size} photos created"
 
 # Events
-event = Event.find_by(name: "Monthly Yoga Weekend")
-event.themes << Theme.find_by(name: "Outdoors & Adventure")
-event.themes << Theme.find_by(name: "Sports & Fitness")
+event1 = Event.find_by(name: "Monthly Yoga Weekend")
+event1.themes << Theme.find_by(name: "Outdoors & Adventure")
+event1.themes << Theme.find_by(name: "Sports & Fitness")
+# event1.photos << photo1
+# event1.photos << photo2
+# event1.photos << photo3
 
-puts "#{Event.all.size} events created"
+puts "#{Event.all.size} themed events created"
