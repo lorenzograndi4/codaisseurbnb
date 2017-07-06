@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def show
     @themes = @event.themes
+    @photos = @event.photos
   end
 
   def new
