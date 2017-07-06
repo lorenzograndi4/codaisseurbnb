@@ -1,4 +1,4 @@
-<%= form_for @event do |e| %>
+<%= form_for @event, html: { multipart: true } do |e| %>
 
   <div class="form-group">
    <label>Event name</label>
@@ -41,6 +41,18 @@
     <div class="input-group">
       <div class="input-group-addon">€</div>
       <%= e.number_field :price, placeholder: "e.g. 30", class: "form-control" %>
+    </div>
+  </div>
+
+  <label>Photos</label>
+  <div class="form-group">
+    <span class="btn btn-default">
+      Upload Photos
+      <%= file_field_tag "images[]", type: :file, multiple: true %>
+    </span>
+
+    <div id="photos">
+      <%= render 'photos/list' %>
     </div>
   </div>
 
