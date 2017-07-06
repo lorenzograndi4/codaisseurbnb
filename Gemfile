@@ -75,5 +75,8 @@ gem 'devise', '~> 4.2'
 #  to run a Rails application on a twelve-factor provider.
 gem 'rails_12factor', group: :production
 
-#  Image uploading
+#  Assets uploading
 gem 'carrierwave', '0.11.2'
+
+#  Assets storage and optimisation
+gem 'cloudinary', '1.2.3'
