@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
+  has_many :photos 
   has_and_belongs_to_many :themes
 
   validates :name, :location, :starts_at,
