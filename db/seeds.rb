@@ -1,4 +1,5 @@
 Profile.delete_all
+Ticket.delete_all
 Theme.delete_all
 Photo.delete_all
 Event.delete_all
@@ -58,3 +59,6 @@ event1.themes << Theme.find_by(name: "Sports & Fitness")
 # event1.photos << photo3
 
 puts "#{Event.all.size} themed events created"
+
+Ticket.create(event: event1, user: lorenzo2, price: 50, total: 100, starts_at: 10.days.from_now, ends_at: 12.days.from_now)
+Ticket.create(event: event1, user: lorenzo2, price: 50, total: 200, starts_at: 20.days.from_now, ends_at: 24.days.from_now)

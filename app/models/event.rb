@@ -1,7 +1,9 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :photos 
+  has_many :photos
   has_and_belongs_to_many :themes
+  has_many :tickets, dependent: :destroy
+  has_many :attendants, through: :tickets, source: :user
 
   validates :name, :location, :starts_at,
     presence: true

@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :events, dependent: :destroy
   has_one :profile, dependent: :destroy
+  has_many :tickets, dependent: :destroy
+  has_many :attended_events, through: :tickets, source: :event
 
   def has_profile?
     profile.present? && profile.persisted?

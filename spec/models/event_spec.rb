@@ -13,6 +13,18 @@ RSpec.describe Event, type: :model do
   it { is_expected.to have_and_belong_to_many :themes }
   end
 
+  describe "association with ticket" do
+  let(:attendant) { create :user, email: "attendant@user.com" }
+  let(:organizer) { create :user, email: "organizer@user.com" }
+
+  let!(:event) { create :event, user: organizer }
+  let!(:ticket) { create :ticket, event: event, user: attendant }
+
+    it "has attendants" do
+      expect(event.users).to include(attendant)
+    end
+  end
+
   describe "#bargain?" do
     let(:bargain_event) { create :event, price: 15 }
     let(:non_bargain_event) { create :event, price: 99 }
