@@ -2,14 +2,18 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @ticket = current_user.tickets.create(ticket_params)
+    # @event = Event.find(params[:event_id])
+    @ticket = current_user.tickets.new(allowed_ticket_params)
+    @ticket.event_id = params[:event_id]
+    @ticket.set_total_price
+    @ticket.save
 
     redirect_to @ticket.event, notice: "Thanks for getting this ticket!"
   end
 
   private
 
-  def ticket_params
-    params.require(:ticket).permit(:starts_at, :ends_at, :price, :total, :event_id)
+  def allowed_ticket_params
+    params.require(:ticket).permit(:amount)
   end
 end

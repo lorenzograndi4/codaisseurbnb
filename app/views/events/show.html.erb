@@ -3,6 +3,16 @@
   <%= link_to "Update", edit_event_path(@event), class: "btn btn-default" %>
 </div>
 
+<% if current_user != @event.user %>
+  <div class="panel panel-primary">
+    <div class="panel-heading">Buy a ticket</div>
+
+    <div class="panel-body">
+      <%= render 'tickets/form' %>
+    </div>
+  </div>
+<% end %>
+
 <div class="panel panel-primary">
   <div class="panel-heading"><%= @event.name %></div>
 

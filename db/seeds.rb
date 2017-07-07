@@ -1,13 +1,13 @@
-Profile.delete_all
-Ticket.delete_all
-Theme.delete_all
-Photo.delete_all
-Event.delete_all
-User.delete_all
+Profile.destroy_all
+Ticket.destroy_all
+Theme.destroy_all
+Photo.destroy_all
+Event.destroy_all
+User.destroy_all
 
 # Users
-lorenzo1 = User.create(email: "lorenzo+1@pr.co", password: "lorenzo")
-lorenzo2 = User.create(email: "lorenzo.grandi4@gmail.com", password: "lorenzo")
+lorenzo1 = User.create!(email: "lorenzo+1@pr.co", password: "lorenzo")
+lorenzo2 = User.create!(email: "lorenzo.grandi4@gmail.com", password: "lorenzo")
 
 puts "#{User.all.size} users created"
 
@@ -45,7 +45,7 @@ puts "#{Theme.all.size} themes created"
 
 # Photos
 photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/lorenzocloudinary/image/upload/v1499347416/gtt08g1hdkymczecgogr.jpg", event: event1)
-photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/lorenzocloudinary/image/upload/v1499346823/fikzms6qtuulzuaa1nsm.jpg", event: event1)
+# photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/lorenzocloudinary/image/upload/v1499346823/fikzms6qtuulzuaa1nsm.jpg", event: event1)
 photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/lorenzocloudinary/image/upload/v1499346822/vndqg81ggj99jcwa2vxy.jpg", event: event1)
 
 puts "#{Photo.all.size} photos created"
@@ -60,5 +60,7 @@ event1.themes << Theme.find_by(name: "Sports & Fitness")
 
 puts "#{Event.all.size} themed events created"
 
-Ticket.create(event: event1, user: lorenzo2, price: 50, total: 100, starts_at: 10.days.from_now, ends_at: 12.days.from_now)
-Ticket.create(event: event1, user: lorenzo2, price: 50, total: 200, starts_at: 20.days.from_now, ends_at: 24.days.from_now)
+Ticket.create!(event: event1, user: lorenzo2, price: 50, total: 100, starts_at: 10.days.from_now, ends_at: 12.days.from_now)
+Ticket.create!(event: event1, user: lorenzo2, price: 50, total: 200, starts_at: 20.days.from_now, ends_at: 24.days.from_now)
+
+puts "#{Ticket.all.size} tickets created."
