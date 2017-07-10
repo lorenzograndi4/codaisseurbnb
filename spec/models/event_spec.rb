@@ -21,7 +21,7 @@ RSpec.describe Event, type: :model do
   let!(:ticket) { create :ticket, event: event, user: attendant }
 
     it "has attendants" do
-      expect(event.users).to include(attendant)
+      expect(event.attendants).to include(attendant)
     end
   end
 
@@ -45,6 +45,17 @@ RSpec.describe Event, type: :model do
       expect(Event.order_by_price).to eq([event3, event1, event2])
     end
   end
+
+  describe ".alphabetical" do
+    let!(:event1) { create :event, name: 'Super event' }
+    let!(:event2) { create :event, name: 'Funny event' }
+    let!(:event3) { create :event, name: 'Mediocre event' }
+
+    it "returns a sorted array of events by alphabetical order" do
+      expect(Event.alphabetical).to eq([event2, event3, event1])
+    end
+  end
+
 
   describe "validations" do
 

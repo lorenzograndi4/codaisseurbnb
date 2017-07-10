@@ -12,6 +12,12 @@ class Event < ApplicationRecord
   validates :description,
     length: { maximum: 500 }
 
+  scope :published, -> { where(active: true) }
+
+  def self.alphabetical
+    order(name: :asc)
+  end
+
   def bargain?
     price <= 30
   end
