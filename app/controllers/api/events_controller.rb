@@ -18,6 +18,20 @@ class Api::EventsController < ApplicationController
     end
   end
 
+  def update
+    event = Event.find(params[:id])
+    if event.update(event_params)
+      render(status: 200, json: {message: "Event updated!", event: event}.to_json)
+    else
+      render(status: 422, json: {errors: event.errors}.to_json)
+    end
+  end
+
+  def destroy
+    Event.find(params[:id]).destroy
+    render(status: 200, json: {message: "Event deleted!"}.to_json)
+  end
+
   private
 
   def event_params

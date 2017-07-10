@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "about" => "pages#about"
 
   namespace :api do
-    resources :events, only: [:index, :show, :create]
+    resources :events, except: [:edit, :new]
   end
 
 end
