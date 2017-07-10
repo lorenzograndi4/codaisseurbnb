@@ -2,17 +2,20 @@ class Api::EventsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render( status: 200, json: {events: Event.all}.to_json )
+    # render( status: 200, json: {events: Event.all}.to_json ) # before serializers
+    render status: 200, json: events
   end
 
   def show
-    render( status: 200, json: {event: Event.find(params[:id])}.to_json )
+    event = Event.find(params[:id])
+    # render( status: 200, json: {event: Event.find(params[:id])}.to_json )
+    render status: 200, json: event
   end
 
   def create
     event = Event.new(event_params)
     if event.save
-      render(status: 201, json: {message: "Event created!", event: event}.to_json)
+      render(status: 201, json: event)
     else
       render(status: 422, json: {errors: event.errors}.to_json)
     end
@@ -21,9 +24,9 @@ class Api::EventsController < ApplicationController
   def update
     event = Event.find(params[:id])
     if event.update(event_params)
-      render(status: 200, json: {message: "Event updated!", event: event}.to_json)
+      render(status: 200, json: event)
     else
-      render(status: 422, json: {errors: event.errors}.to_json)
+      render(status: 500, json: {message: "The event could not be updated", errors: event.errors}.to_json)
     end
   end
 

@@ -80,3 +80,6 @@ gem 'carrierwave', '0.11.2'
 
 #  Assets storage and optimisation
 gem 'cloudinary', '1.2.3'
+
+# Create serializers for each model
+gem 'active_model_serializers', '~> 0.10.0'
