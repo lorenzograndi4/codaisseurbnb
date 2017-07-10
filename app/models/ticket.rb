@@ -19,8 +19,16 @@ class Ticket < ApplicationRecord
       departure = departure.change(hour: 11, min: 00, sec: 00)
 
       startsbefore_endsafter(arrival, departure)
-      .or(starts_during)
-      .or()
+      .or(starts_during(arrival, departure))
+      .or(ends_during(arrival, departure))
+  end
+
+  def self.sametime_events(arrival, departure)
+    during(arrival, departure).pluck(:event_id)
+  end
+
+  def self.non_sametime_events(arrival, departure)
+    
   end
 
   def set_total_price
