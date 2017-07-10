@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :events, except: [:edit, :new]
+    resources :themes, except: [:edit, :new]
   end
 
 end
