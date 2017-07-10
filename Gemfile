@@ -83,3 +83,6 @@ gem 'cloudinary', '1.2.3'
 
 # Create serializers for each model
 gem 'active_model_serializers', '~> 0.10.0'
+
+# Authenticate users via API
+gem 'has_secure_token'

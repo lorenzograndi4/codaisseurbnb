@@ -1,9 +1,8 @@
-class Api::EventsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+class Api::EventsController < Api::BaseController
 
   def index
-    # render( status: 200, json: {events: Event.all}.to_json ) # before serializers
-    render status: 200, json: events
+    render( status: 200, json: {events: Event.all}.to_json ) # before serializers
+    # render status: 200, json: events
   end
 
   def show
@@ -13,7 +12,7 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(event_params)
+    event = @user.events.build(event_params)
     if event.save
       render(status: 201, json: event)
     else

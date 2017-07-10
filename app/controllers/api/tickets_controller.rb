@@ -1,5 +1,4 @@
-class Api::TicketsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+class Api::TicketsController < Api::BaseController
   before_action :set_event
 
   def create
@@ -49,10 +48,10 @@ class Api::TicketsController < ApplicationController
   private
 
   def set_event
-    event = Event.find params[:event_id]
+    @event = Event.find params[:event_id]
   end
 
   def allowed_ticket_params
-    params.require(:event).permit(:amount)
+    params.require(:ticket).permit(:amount)
   end
 end

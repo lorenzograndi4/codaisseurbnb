@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :tickets, dependent: :destroy
   has_many :attended_events, through: :tickets, source: :event
-
+  has_secure_token
+  
   def has_profile?
     profile.present? && profile.persisted?
   end
