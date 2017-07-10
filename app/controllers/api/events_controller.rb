@@ -21,7 +21,7 @@ class Api::EventsController < Api::BaseController
   end
 
   def update
-    event = Event.find(params[:id])
+    event = @user.events.find(params[:id])
     if event.update(event_params)
       render(status: 200, json: event)
     else
