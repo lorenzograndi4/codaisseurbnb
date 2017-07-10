@@ -1,6 +1,8 @@
 class Ticket < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :event
+
+  before_save :set_total_price
 
   def self.startsbefore_endsafter(arrival, departure)
     where('starts_at < ? AND ends_at > ?', arrival, departure)
@@ -28,7 +30,7 @@ class Ticket < ApplicationRecord
   end
 
   def self.non_sametime_events(arrival, departure)
-    
+
   end
 
   def set_total_price
